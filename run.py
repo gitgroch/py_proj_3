@@ -46,6 +46,23 @@ def getRandomWord(wordList):
     # return the elementin list at the random index stored 
     print(wordList)
 
-print(getRandomWord(words))
+def displayBoard(missedLetters, correctLetters, secretWord):
+    '''
+    Display game interface, 
+    show correct guesses, letters guessed incorrectly and hangman progress
+    '''
+    print(HANGMAN_PICS[len(missedLetters)])
+    # display hangman progress based on the lenght of missed letters 
+    print()
+
+    print("Missed letters:", end='')
+    # prints message with a space at the end rather than moving to new line 
+    for letters in missedLetters:
+        # iterate through each letter in missedLetters and print
+        print(letter, end='')
+    print()
+
+    
+
 
 
