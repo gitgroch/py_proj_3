@@ -40,11 +40,11 @@ def get_random_word(word_list):
     '''
     Returns a random word (string) from a word list
     '''
-    word_index = random.randint(0, len(wordList) -1)
+    word_index = random.randint(0, len(word_list) -1)
     # store a random index for list in variable
     return word_list[word_index]
     # return the elementin list at the random index stored
-    print(wordList)
+    print(word_list)
 
 def display_board(missed_letters, correct_letters, secret_word):
     '''
@@ -57,7 +57,7 @@ def display_board(missed_letters, correct_letters, secret_word):
 
     print("Missed letters:", end=' ')
     # prints message with a space at the end rather than moving to new line
-    for letters in missed_letters:
+    for letter in missed_letters:
         # iterate through each letter in missedLetters and print
         print(letter, end=' ')
     print()
@@ -117,6 +117,7 @@ while True:
         # Win Condition 
         found_all_letters = True 
         for i in range(len(secret_word)):
+
             found_all_letters = False
             break 
         if found_all_letters:
@@ -124,6 +125,20 @@ while True:
             game_done = True 
     else:
         missed_letters = missed_letters + guess
+
+        if len(missed_letters) == len(HANGMAN_PICS) -1:
+            display_board(missed_letters, correct_letters, secret_word)
+            print(f"You have run out of guesses!\n After {str(len(missed_letters))} missed guesses and {str(len(correct_letters))} correct guesses. The word was {secret_word}")
+            game_done = True    
+
+    if game_done:
+        if play_again():
+            missed_letters = ''
+            correct_letters = ''
+            game_done = False
+            secret_word = get_random_word(words)
+        else:
+            break
 
 
 
