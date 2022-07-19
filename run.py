@@ -32,7 +32,8 @@ HANGMAN_PICS = ['''
    /|\  |
    / \  |
         ===''']
-    
+
+# Word list  
 words = 'aluminium key giant location drawing ignorance cancer establish\
     prosper learn print gravity joint architect\
          charge exaggerate state dorm piano'.split()
@@ -106,7 +107,10 @@ def play_again():
 
 
 # GAME LOOP 
-print('H A N G M A N')
+print('''                          
+|_|  /\  |\ | /__ |\/|  /\  |\ | 
+| | /--\ | \| \_| |  | /--\ | \| 
+''')
 missed_letters = ''
 correct_letters = ''
 secret_word = get_random_word(words)
