@@ -106,52 +106,54 @@ def play_again():
     return input().lower().startswith('y')
 
 
-# GAME LOOP 
-print('''                          
-|_|  /\  |\ | /__ |\/|  /\  |\ | 
-| | /--\ | \| \_| |  | /--\ | \| 
-''')
-missed_letters = ''
-correct_letters = ''
-secret_word = get_random_word(words)
-GAME_DONE = False
+def start_game():
+    # GAME LOOP 
+    print('''                          
+    |_|  /\  |\ | /__ |\/|  /\  |\ | 
+    | | /--\ | \| \_| |  | /--\ | \| 
+    ''')
+    missed_letters = ''
+    correct_letters = ''
+    secret_word = get_random_word(words)
+    GAME_DONE = False
 
-while True: 
-    display_board(missed_letters, correct_letters, secret_word)
-    # call display board function with defined variables 
-    guess = get_guess(missed_letters + correct_letters)
-    # call get guess function, concate missed letter
-    # and correct letters for already_guessed 
-    if guess in secret_word:
-        # check if guess letter is in game word  
-        correct_letters = correct_letters + guess
-        # if tru concate correct_letters and guess 
+    while True: 
+        display_board(missed_letters, correct_letters, secret_word)
+        # call display board function with defined variables 
+        guess = get_guess(missed_letters + correct_letters)
+        # call get guess function, concate missed letter
+        # and correct letters for already_guessed 
+        if guess in secret_word:
+            # check if guess letter is in game word  
+            correct_letters = correct_letters + guess
+            # if tru concate correct_letters and guess 
 
-        # Win Condition 
-        found_all_letters = True 
-        for i in range(len(secret_word)):
-            if secret_word[i] not in correct_letters:
-                found_all_letters = False
-                break 
-        if found_all_letters:
-            print(f"Yes, the word is {secret_word} , You won! ")
-            GAME_DONE = True 
-    else:
-        missed_letters = missed_letters + guess
-
-        if len(missed_letters) == len(HANGMAN_PICS) - 1:
-            display_board(missed_letters, correct_letters, secret_word)
-            print(f"You have run out of guesses!\
-                 After {str(len(missed_letters))} missed guesses \
-                 and {str(len(correct_letters))} correct guesses.\
-                     The word was {secret_word}")
-            GAME_DONE = True    
-
-    if GAME_DONE:
-        if play_again():
-            missed_letters = ''
-            correct_letters = ''
-            GAME_DONE = False
-            secret_word = get_random_word(words)
+            # Win Condition 
+            found_all_letters = True 
+            for i in range(len(secret_word)):
+                if secret_word[i] not in correct_letters:
+                    found_all_letters = False
+                    break 
+            if found_all_letters:
+                print(f"Yes, the word is {secret_word} , You won! ")
+                GAME_DONE = True 
         else:
-            break
+            missed_letters = missed_letters + guess
+
+            if len(missed_letters) == len(HANGMAN_PICS) - 1:
+                display_board(missed_letters, correct_letters, secret_word)
+                print(f"You have run out of guesses!\
+                    After {str(len(missed_letters))} missed guesses \
+                    and {str(len(correct_letters))} correct guesses.\
+                        The word was {secret_word}")
+                GAME_DONE = True    
+
+        if GAME_DONE:
+            if play_again():
+                missed_letters = ''
+                correct_letters = ''
+                GAME_DONE = False
+                secret_word = get_random_word(words)
+            else:
+                break
+start_game()
