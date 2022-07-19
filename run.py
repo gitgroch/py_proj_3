@@ -81,6 +81,7 @@ def get_guess(already_guessed):
         print("Guess a letter.")
         guess = input()
         guess = guess.lower()
+        # ask player for letter, convert to lower case 
         if len(guess) != 1:
             print('Please enter a single letter')
         elif guess in already_guessed:
@@ -89,5 +90,40 @@ def get_guess(already_guessed):
             print('Oops! That does not seem to be a letter, please try again using a letter.!')
         else: 
             return guess
+
+def play_again():
+# asks player to play again, take input and validate if starts with 'y'
+    print('Would you like to play again? (yes or no)')
+    return input().lower().startswith('y')
+
+
+# GAME LOOP 
+print('H A N G M A N')
+missed_letters = ''
+correct_letters = ''
+secret_word = get_random_word(words)
+game_done = False
+
+while True: 
+    display_board(missed_letters, correct_letters, secret_word)
+    # call display board function with defined variables 
+    guess = get_guess(missed_letters + correct_letters)
+    # call get guess function, concate missed letetr and correct letters for already_guessed 
+    if guess in secret_word:
+        # check if guess letter is in game word  
+        correct_letters = correct_letters + guess
+        # if tru concate correct_letters and guess 
+
+        # Win Condition 
+        found_all_letters = True 
+        for i in range(len(secret_word)):
+            found_all_letters = False
+            break 
+        if found_all_letters:
+            print(f"Yes, the word is {secret_word} , You won! ")
+            game_done = True 
+    else:
+        missed_letters = missed_letters + guess
+
 
 
