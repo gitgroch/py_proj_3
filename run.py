@@ -1,3 +1,10 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+
+words = 'aluminium key giant location drawing ignorance cancer establish deficiency prosper learn print gravity joint architect charge exaggerate state dorm piano '
+
+def getRandomWord():
+    '''
+    Returns a random word (string) from a word list
+    '''
+    wordIndex = random.randint(0, len(wordList) -1)
+    return wordList[wordIndex]
+
