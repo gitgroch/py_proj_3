@@ -117,9 +117,9 @@ while True:
         # Win Condition 
         found_all_letters = True 
         for i in range(len(secret_word)):
-
-            found_all_letters = False
-            break 
+            if secret_word[i] not in correct_letters:
+                found_all_letters = False
+                break 
         if found_all_letters:
             print(f"Yes, the word is {secret_word} , You won! ")
             game_done = True 
