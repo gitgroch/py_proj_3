@@ -33,18 +33,21 @@ HANGMAN_PICS = ['''
    / \  |
         ===''']
     
-words = 'aluminium key giant location drawing ignorance cancer establish prosper learn print gravity joint architect charge exaggerate state dorm piano'.split()
+words = 'aluminium key giant location drawing ignorance cancer establish\
+    prosper learn print gravity joint architect\
+         charge exaggerate state dorm piano'.split()
 
 
 def get_random_word(word_list):
     '''
     Returns a random word (string) from a word list
-    '''
-    word_index = random.randint(0, len(word_list) -1)
+    ''' 
+    word_index = random.randint(0, len(word_list) - 1)
     # store a random index for list in variable
     return word_list[word_index]
     # return the elementin list at the random index stored
     print(word_list)
+
 
 def display_board(missed_letters, correct_letters, secret_word):
     '''
@@ -66,18 +69,20 @@ def display_board(missed_letters, correct_letters, secret_word):
     # create blanks for secret word based on lenght of secretWord variable
 
     for i in range(len(secret_word)):
-    # iterate through secretWord, replace blanks with letters at their index if in correct letters
+        # iterate through secretWord, replace blanks with 
+        # letters at their index if in correct letters
         if secret_word[i] in correct_letters:
             blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
-    
+  
     for letter in blanks:
-    # show game word with spaces between each letter
+        # show game word with spaces between each letter
         print(letter, end=' ')
     print()
 
+
 def get_guess(already_guessed):
     # returns letter entered by player. Handles invalid input 
-    while True :
+    while True:
         print("Guess a letter.")
         guess = input()
         guess = guess.lower()
@@ -85,14 +90,17 @@ def get_guess(already_guessed):
         if len(guess) != 1:
             print('Please enter a single letter')
         elif guess in already_guessed:
-            print('Oops! You have already guessed that letter! Please try again.')
+            print('Oops! You have already guessed\
+                 that letter! Please try again.')
         elif guess not in 'abcdefghijklmnopqrstuvwxyz':
-            print('Oops! That does not seem to be a letter, please try again using a letter.!')
+            print('Oops! That does not seem to be a letter,\
+                 please try again using a letter.!')
         else: 
             return guess
 
+
 def play_again():
-# asks player to play again, take input and validate if starts with 'y'
+    # asks player to play again, take input and validate if starts with 'y'
     print('Would you like to play again? (yes or no)')
     return input().lower().startswith('y')
 
@@ -102,13 +110,14 @@ print('H A N G M A N')
 missed_letters = ''
 correct_letters = ''
 secret_word = get_random_word(words)
-game_done = False
+GAME_DONE = False
 
 while True: 
     display_board(missed_letters, correct_letters, secret_word)
     # call display board function with defined variables 
     guess = get_guess(missed_letters + correct_letters)
-    # call get guess function, concate missed letetr and correct letters for already_guessed 
+    # call get guess function, concate missed letter
+    # and correct letters for already_guessed 
     if guess in secret_word:
         # check if guess letter is in game word  
         correct_letters = correct_letters + guess
@@ -122,23 +131,23 @@ while True:
                 break 
         if found_all_letters:
             print(f"Yes, the word is {secret_word} , You won! ")
-            game_done = True 
+            GAME_DONE = True 
     else:
         missed_letters = missed_letters + guess
 
-        if len(missed_letters) == len(HANGMAN_PICS) -1:
+        if len(missed_letters) == len(HANGMAN_PICS) - 1:
             display_board(missed_letters, correct_letters, secret_word)
-            print(f"You have run out of guesses!\n After {str(len(missed_letters))} missed guesses and {str(len(correct_letters))} correct guesses. The word was {secret_word}")
-            game_done = True    
+            print(f"You have run out of guesses!\
+                 After {str(len(missed_letters))} missed guesses \
+                 and {str(len(correct_letters))} correct guesses.\
+                     The word was {secret_word}")
+            GAME_DONE = True    
 
-    if game_done:
+    if GAME_DONE:
         if play_again():
             missed_letters = ''
             correct_letters = ''
-            game_done = False
+            GAME_DONE = False
             secret_word = get_random_word(words)
         else:
             break
-
-
-
