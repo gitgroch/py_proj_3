@@ -41,11 +41,11 @@ HANGMAN_PICS = ['''
   _/ \_ |
         ===''']
 
-# Word list  
-words = 'aluminium key giant location drawing ignorance cancer establish\
-    prosper learn print gravity joint architect\
-         charge exaggerate state dorm piano'.split()
+# Word list
 
+word_file = open("word_list.txt", "r")
+word_content = word_file.read()
+words = word_content.split()
 
 def get_random_word(word_list):
     '''
@@ -55,7 +55,6 @@ def get_random_word(word_list):
     # store a random index for list in variable
     return word_list[word_index]
     # return the elementin list at the random index stored
-    print(word_list)
 
 
 def display_board(missed_letters, correct_letters, secret_word):
