@@ -109,7 +109,7 @@ def get_guess(already_guessed):
  that letter! Please try again.')
         elif guess not in 'abcdefghijklmnopqrstuvwxyz':
             print('Oops! That does not seem to be a letter,\
- please try again using a letter.!')
+ please try again using a letter!')
         else: 
             return guess
 
@@ -156,7 +156,8 @@ def start_game():
             # Win Condition 
             found_all_letters = True 
             for i in range(len(secret_word)):
-                # sets found_all_letters to false if all correct letters not present
+                # sets found_all_letters to false if all 
+                # correct letters not present
                 if secret_word[i] not in correct_letters:
                     found_all_letters = False
                     break 
