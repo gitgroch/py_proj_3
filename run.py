@@ -120,12 +120,26 @@ def start_game():
     |_|  /\  |\ | /__ |\/|  /\  |\ | 
     | | /--\ | \| \_| |  | /--\ | \| 
     ''')
+
+    difficulty_choice()
+    # difficulty = ' '
+    # while difficulty not in 'EMH':
+    #     print('Choose your difficulty: E - Easy, M - Medium, H - Hard')
+    #     difficulty = input().upper()
+    # if difficulty == 'M':
+    #     del HANGMAN_PICS[8]
+    #     del HANGMAN_PICS[7]
+    # if difficulty == 'H':
+    #     del HANGMAN_PICS[8]
+    #     del HANGMAN_PICS[7]
+    #     del HANGMAN_PICS[5]
+    #     del HANGMAN_PICS[3]
+
     missed_letters = ''
     correct_letters = ''
-    difficulty = ' '
     secret_word = get_random_word(words)
     GAME_DONE = False
-
+   
     while True: 
         display_board(missed_letters, correct_letters, secret_word)
         # call display board function with defined variables 
@@ -166,11 +180,18 @@ def start_game():
             else:
                 break
 
-def select_difficulty():
+def difficulty_choice():
+    difficulty = ' '
     while difficulty not in 'EMH':
-        print('Choose your difficulty: E - Easy, M - Medium, H - Hard ')
-        difficulty = input().upper
-        return difficulty
-
+        print('Choose your difficulty: E - Easy, M - Medium, H - Hard')
+        difficulty = input().upper()
+    if difficulty == 'M':
+        del HANGMAN_PICS[8]
+        del HANGMAN_PICS[7]
+    if difficulty == 'H':
+        del HANGMAN_PICS[8]
+        del HANGMAN_PICS[7]
+        del HANGMAN_PICS[5]
+        del HANGMAN_PICS[3]
 
 start_game()
