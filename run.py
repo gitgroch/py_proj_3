@@ -174,14 +174,17 @@ def difficulty_choice():
     while difficulty not in 'EMH':
         print('Choose your difficulty: E - Easy, M - Medium, H - Hard')
         difficulty = input().upper()
-    if difficulty == 'M':
-        del HANGMAN_PICS[8]
-        del HANGMAN_PICS[7]
-    if difficulty == 'H':
-        del HANGMAN_PICS[8]
-        del HANGMAN_PICS[7]
-        del HANGMAN_PICS[5]
-        del HANGMAN_PICS[3]
+        if difficulty == 'M':
+            del HANGMAN_PICS[8]
+            del HANGMAN_PICS[7]
+        if difficulty == 'H':
+            del HANGMAN_PICS[8]
+            del HANGMAN_PICS[7]
+            del HANGMAN_PICS[5]
+            del HANGMAN_PICS[3]
+        else:
+            print('Please choose Y or N')
+            difficulty_choice()
 
 def rules():
     print('Would you like to see the rules? (Y or N)')
@@ -191,7 +194,7 @@ def rules():
     elif choice == 'N':
         print()
     else:
-        print('Please type Y or N')
+        print('Please type either Y or N')
         rules()
 
 def show_rules():
