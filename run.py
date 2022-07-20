@@ -12,40 +12,47 @@ HANGMAN_PICS = ['''
         |
         |
         ===''', '''
+    +---+
     O   |
     |   |
         |
         ===''', '''
+    +---+
     O   |
    /|   |
         |
         ===''', '''
+    +---+
     O   |
    /|\  |
         |
         ===''', '''
+    +---+
     O   |
    /|\  |
    /    |
         ===''', '''
+    +---+
     O   |
    /|\  |
    / \  |
         ===''', '''
+    +---+
     O   |
    /|\  |
   _/ \_ |
         ===''', '''
+    +---+
     O   |
   _/|\_ |
   _/ \_ |
         ===''']
 
 # Word list
-
 word_file = open("word_list.txt", "r")
 word_content = word_file.read()
 words = word_content.split()
+
 
 def get_random_word(word_list):
     '''
@@ -99,10 +106,10 @@ def get_guess(already_guessed):
             print('Please enter a single letter')
         elif guess in already_guessed:
             print('Oops! You have already guessed\
-                 that letter! Please try again.')
+that letter! Please try again.')
         elif guess not in 'abcdefghijklmnopqrstuvwxyz':
             print('Oops! That does not seem to be a letter,\
-                 please try again using a letter.!')
+please try again using a letter.!')
         else: 
             return guess
 
@@ -146,17 +153,19 @@ def start_game():
                     found_all_letters = False
                     break 
             if found_all_letters:
-                print(f"Yes, the word is {secret_word} , You won! ")
+                print(f"\nYes, the word is {secret_word} , You won!\n\
+You had {str(len(missed_letters))} missed guesses,\
+and {str(len(correct_letters))} correct guesses.\n")
                 GAME_DONE = True 
         else:
             missed_letters = missed_letters + guess
 
             if len(missed_letters) == len(HANGMAN_PICS) - 1:
                 display_board(missed_letters, correct_letters, secret_word)
-                print(f"You have run out of guesses!\
-                    After {str(len(missed_letters))} missed guesses \
-                    and {str(len(correct_letters))} correct guesses.\
-                        The word was {secret_word}")
+                print(f"You have run out of guesses!\n\
+You had {str(len(missed_letters))} missed guesses,\
+and {str(len(correct_letters))} correct guesses.\n \
+The word was {secret_word}.\n")
                 GAME_DONE = True    
 
         if GAME_DONE:
