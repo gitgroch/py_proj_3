@@ -64,17 +64,85 @@ I took these elements and created a flow chart using [draw.io](https://www.draw.
 
 ### Features
 
+#### Rules 
 
+When the player loads the game they can choose to view the rules. 
+![screenshot of the rules .](/assets/images/rules.jpg)
+
+#### Difficulty 
+
+Next the player can choose their difficulty setting:
+![screenshot of the difficulty choice.](/assets/images/difficulty.jpg)
+
+#### Game Board 
+
+The player is presented with the game board. It is an empty gallows with blanks representing the hidden word.
+
+![screenshot of the gameboard.](/assets/images/gameboard.jpg)
+
+#### Guessing 
+
+The player can then make a guess by entering a letter on their keyboard. 
+- If they guess correctly the letter will display in it's correct place in the game word:
+
+![screenshot of a correct guess .](/assets/images/correct_guess.jpg)
+
+- if the player guesses incorrectly, the gallows art will update with a body part. The letter that they guessed incorrectly will be added to the list of Missed Letters.
+
+![screenshot of an incorrect guess.](/assets/images/missed.jpg)
+
+#### Winning and Losing 
+
+- If the player guesses all the letters correctly they win the game.
+- The console will show the user how many missed and correct guesses they made in
+ the game.
+
+![screenshot of the win state.](/assets/images/win.jpg)
+
+- If the player runs out of chances without guessing the word, they lose the game.
+- The console will show the user how many missed and correct guesses they made in the game.
+- The console will also show the hidden game word. 
+
+![screenshot of the lose state.](/assets/images/lose.jpg)
+
+#### Play Again 
+
+Regardless of if the player won or lost the game, they can choose to play again or close the program.
+
+#### Error Validation 
+
+The player is notified and prompted to re-enter their choice if their input is invalid. This occurs wherever a choice is required. 
+
+![screenshot of the lose state.](/assets/images/error_validation.jpg)
 
 ### Future Features
 
-## Data Model
+- Replace hangman imagery with something more original.
+- Add the ability to choose different word categories and length.
+- Add more nuance to the difficulty setting (e.g. Longer or harder words).
+
 
 ## Testing
+
+I have manually tested the game by doing the following: 
+- Passed the code through PEP8 linter and confirmed there are no errors.
+- Tested error validation by entering invalid inputs.
+- Tested on my local terminal and on the Code Institute Heroku Terminal
+
 ### Bugs
 
-### Validator Testing
+#### Solved Bugs
 
+- In the difficulty_choice function The statement in the print function for my else condition ran regardless of what the input was. 
+    - I had 2 If statements, changing one to elif sloved this issue. 
+
+- In the difficulty_choice function, when the else statement condition was met, it did not loop back to the start, rather it proceeded to the next part of the start_game function.
+    - Added the continue python continue keyword. 
+
+
+### Remaining Bugs 
+
+- There are no bugs remaining
 ## Deployment
 
 This project was deployed using Code Institute's mock terminal for Heroku.
