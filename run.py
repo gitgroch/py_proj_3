@@ -123,18 +123,6 @@ def start_game():
 
     rules()
     difficulty_choice()
-    # difficulty = ' '
-    # while difficulty not in 'EMH':
-    #     print('Choose your difficulty: E - Easy, M - Medium, H - Hard')
-    #     difficulty = input().upper()
-    # if difficulty == 'M':
-    #     del HANGMAN_PICS[8]
-    #     del HANGMAN_PICS[7]
-    # if difficulty == 'H':
-    #     del HANGMAN_PICS[8]
-    #     del HANGMAN_PICS[7]
-    #     del HANGMAN_PICS[5]
-    #     del HANGMAN_PICS[3]
 
     missed_letters = ''
     correct_letters = ''
