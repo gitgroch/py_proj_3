@@ -31,6 +31,14 @@ HANGMAN_PICS = ['''
     O   |
    /|\  |
    / \  |
+        ===''', '''
+    O   |
+   /|\  |
+  _/ \_ |
+        ===''', '''
+    O   |
+  _/|\_ |
+  _/ \_ |
         ===''']
 
 # Word list  
@@ -114,6 +122,7 @@ def start_game():
     ''')
     missed_letters = ''
     correct_letters = ''
+    difficulty = ' '
     secret_word = get_random_word(words)
     GAME_DONE = False
 
@@ -156,4 +165,12 @@ def start_game():
                 secret_word = get_random_word(words)
             else:
                 break
+
+def select_difficulty():
+    while difficulty not in 'EMH':
+        print('Choose your difficulty: E - Easy, M - Medium, H - Hard ')
+        difficulty = input().upper
+        return difficulty
+
+
 start_game()
