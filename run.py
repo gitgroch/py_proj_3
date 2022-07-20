@@ -210,20 +210,22 @@ def rules():
 
 def show_rules():
     print('Hangman is a simple word guessing game.\n\
-First choose your difficulty.\n\
+First choose your difficulty:\n\
+\
     - Easy will give you 8 guess\n\
     - Medium will give you 6 guesses\n\
     - Hard will give you 4 guesses\n\
-Next you will see the game board with the gallows\
+\
+Next you will see the game board\
 and a set of blanks representing the hidden word.\n\
 Make a guess by entering a letter with\
 your keyboard and hit enter.\n\
-If you guess a letter in the word, it will\
-appear in the hidden word and you can guess again.\n\
-If you make an incorrect guess,\
+If you guess a letter in the game word,\n\
+it will appear on the game board and you can guess again.\n\
+If you make an incorrect guess,\n\
 a body part will be added\
 to the gameboard gallows.\n\
-If you run out of guesses the gameboard\
+If you run out of guesses, the gameboard\n\
 fills out all the body parts and you lose the game.\n\
 If you guess all the letters correctly, you win!\n')
 
