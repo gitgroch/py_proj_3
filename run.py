@@ -164,7 +164,7 @@ def start_game():
                 # win state
                 print(f"\nYes, the word is {secret_word} , You won!\n\
 You had {str(len(missed_letters))} missed guesses,\
-and {str(len(correct_letters))} correct guesses.\n")
+ and {str(len(correct_letters))} correct guesses.\n")
                 GAME_DONE = True 
         else:
             # lose state
@@ -173,7 +173,7 @@ and {str(len(correct_letters))} correct guesses.\n")
                 display_board(missed_letters, correct_letters, secret_word)
                 print(f"You have run out of guesses!\n\
 You had {str(len(missed_letters))} missed guesses,\
-and {str(len(correct_letters))} correct guesses.\n \
+ and {str(len(correct_letters))} correct guesses.\n \
 The word was {secret_word}.\n")
                 GAME_DONE = True    
 
