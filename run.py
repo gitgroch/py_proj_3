@@ -184,7 +184,8 @@ def difficulty_choice():
             del HANGMAN_PICS[3]
         else:
             print('Please choose Y or N')
-            difficulty_choice()
+            continue
+
 
 def rules():
     print('Would you like to see the rules? (Y or N)')
