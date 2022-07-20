@@ -184,12 +184,18 @@ def difficulty_choice():
         del HANGMAN_PICS[3]
 
 def rules():
-    rules = ' '
-    while rules not in 'YN':
-        print('Would you like to read the rules of the game? (Enter: Y or N)')
-        rules = input().upper()
-    if rules == 'Y':
-        print('Hangman is a simple word guessing game.\n\
+    print('Would you like to see the rules? (Y or N)')
+    choice = input().upper()
+    if choice == 'Y':
+        show_rules()
+    elif choice == 'N':
+        print()
+    else:
+        print('Please type Y or N')
+        rules()
+
+def show_rules():
+      print('Hangman is a simple word guessing game.\n\
 First choose your difficulty.\n\
     - Easy will give you 8 guess\n\
     - Medium will give you 6 guesses\n\
@@ -200,6 +206,6 @@ If you guess a letter in the word, it will appear in the hidden word and you can
 If you make an incorrect guess, a body part will be added to the gameboard gallows.\n\
 If you run out of guesses the gameboard fills out all the body parts and you lose the game.\n\
 If you guess all the letters correctly, you win!\n')
-    print()
+
 
 start_game()
