@@ -1,6 +1,6 @@
 import random
 
-# constant variable for hangman progress art ast a list
+# constant variable for hangman progress art as a list
 HANGMAN_PICS = ['''
     +---+
         |
@@ -48,7 +48,7 @@ HANGMAN_PICS = ['''
   _/ \_ |
         ===''']
 
-# Word list
+# Open word list file, read it, make it a list
 word_file = open("word_list.txt", "r")
 word_content = word_file.read()
 words = word_content.split()
@@ -106,30 +106,38 @@ def get_guess(already_guessed):
             print('Please enter a single letter')
         elif guess in already_guessed:
             print('Oops! You have already guessed\
-that letter! Please try again.')
+ that letter! Please try again.')
         elif guess not in 'abcdefghijklmnopqrstuvwxyz':
             print('Oops! That does not seem to be a letter,\
-please try again using a letter.!')
+ please try again using a letter.!')
         else: 
             return guess
 
 
 def play_again():
-    # asks player to play again, take input and validate if starts with 'y'
+    '''
+    Asks player to play again, take input and validate if starts with 'y'
+    '''
     print('Would you like to play again? (yes or no)')
     return input().lower().startswith('y')
 
 
 def start_game():
+    '''
+    Function for main game loop.
+    Calls rules and difficulty choice fnctions, 
+    begins game and runs until end conditions are met.
+    '''
     # GAME LOOP 
     print('''                          
     |_|  /\  |\ | /__ |\/|  /\  |\ | 
     | | /--\ | \| \_| |  | /--\ | \| 
     ''')
 
+    # Call rules and difficulty functions before starting game loop
     rules()
     difficulty_choice()
-
+    # define variables for game loop
     missed_letters = ''
     correct_letters = ''
     secret_word = get_random_word(words)
@@ -144,22 +152,23 @@ def start_game():
         if guess in secret_word:
             # check if guess letter is in game word  
             correct_letters = correct_letters + guess
-            # if tru concate correct_letters and guess 
-
+            # if true concate correct_letters and guess 
             # Win Condition 
             found_all_letters = True 
             for i in range(len(secret_word)):
+                # sets found_all_letters to false if all correct letters not present
                 if secret_word[i] not in correct_letters:
                     found_all_letters = False
                     break 
             if found_all_letters:
+                # win state
                 print(f"\nYes, the word is {secret_word} , You won!\n\
 You had {str(len(missed_letters))} missed guesses,\
 and {str(len(correct_letters))} correct guesses.\n")
                 GAME_DONE = True 
         else:
+            # lose state
             missed_letters = missed_letters + guess
-
             if len(missed_letters) == len(HANGMAN_PICS) - 1:
                 display_board(missed_letters, correct_letters, secret_word)
                 print(f"You have run out of guesses!\n\
@@ -170,6 +179,7 @@ The word was {secret_word}.\n")
 
         if GAME_DONE:
             if play_again():
+                # resets game state
                 missed_letters = ''
                 correct_letters = ''
                 GAME_DONE = False
@@ -179,6 +189,12 @@ The word was {secret_word}.\n")
 
 
 def difficulty_choice():
+    '''
+    Allows player to choose difficulty. 
+    M will remove 2 list elements from HANGMAN_PICS.
+    H will remove 4 elements
+    Handles error for invalid input
+    '''
     difficulty = ' '
     while difficulty not in 'EMH':
         print('Choose your difficulty: E - Easy, M - Medium, H - Hard')
@@ -199,6 +215,10 @@ def difficulty_choice():
 
 
 def rules():
+    '''
+    Asks player if they wish to see rules. 
+    If Y, shows rules 
+    '''
     print('Would you like to see the rules? (Y or N)')
     choice = input().upper()
     if choice == 'Y':
@@ -211,6 +231,9 @@ def rules():
 
 
 def show_rules():
+    '''
+    Function to hold the rules of the game.
+    '''
     print('Hangman is a simple word guessing game.\n\
 First choose your difficulty:\n\
 \
