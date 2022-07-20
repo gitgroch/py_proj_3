@@ -186,13 +186,15 @@ def difficulty_choice():
         if difficulty == 'M':
             del HANGMAN_PICS[8]
             del HANGMAN_PICS[7]
-        if difficulty == 'H':
+            print("Medium it is!")
+        elif difficulty == 'H':
             del HANGMAN_PICS[8]
             del HANGMAN_PICS[7]
             del HANGMAN_PICS[5]
             del HANGMAN_PICS[3]
+            print("Hard it is!")
         else:
-            print('Please choose Y or N')
+            print("Please choose a difficulty")
             continue
 
 
