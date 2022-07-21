@@ -49,7 +49,7 @@ HANGMAN_PICS = ['''
         ===''']
 
 # Open word list file, read it, make it a list
-word_file = open("word_list.txt", "r")
+word_file = open("word_list.txt", "r", encoding="utf-8")
 word_content = word_file.read()
 words = word_content.split()
 
@@ -57,7 +57,7 @@ words = word_content.split()
 def get_random_word(word_list):
     '''
     Returns a random word (string) from a word list
-    ''' 
+    '''
     word_index = random.randint(0, len(word_list) - 1)
     # store a random index for list in variable
     return word_list[word_index]
@@ -66,7 +66,7 @@ def get_random_word(word_list):
 
 def display_board(missed_letters, correct_letters, secret_word):
     '''
-    Display game interface, 
+    Display game interface,
     show correct guesses, letters guessed incorrectly and hangman progress
     '''
     print(HANGMAN_PICS[len(missed_letters)])
@@ -84,11 +84,11 @@ def display_board(missed_letters, correct_letters, secret_word):
     # create blanks for secret word based on lenght of secretWord variable
 
     for i in range(len(secret_word)):
-        # iterate through secretWord, replace blanks with 
+        # iterate through secretWord, replace blanks with
         # letters at their index if in correct letters
         if secret_word[i] in correct_letters:
             blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
-  
+
     for letter in blanks:
         # show game word with spaces between each letter
         print(letter, end=' ')
@@ -96,12 +96,12 @@ def display_board(missed_letters, correct_letters, secret_word):
 
 
 def get_guess(already_guessed):
-    # returns letter entered by player. Handles invalid input 
+    # returns letter entered by player. Handles invalid input
     while True:
         print("Guess a letter.")
         guess = input()
         guess = guess.lower()
-        # ask player for letter, convert to lower case 
+        # ask player for letter, convert to lower case
         if len(guess) != 1:
             print('Please enter a single letter')
         elif guess in already_guessed:
@@ -110,7 +110,7 @@ def get_guess(already_guessed):
         elif guess not in 'abcdefghijklmnopqrstuvwxyz':
             print('Oops! That does not seem to be a letter,\
  please try again using a letter!')
-        else: 
+        else:
             return guess
 
 
@@ -132,16 +132,16 @@ def play_again():
 def start_game():
     '''
     Function for main game loop.
-    Calls rules and difficulty choice fnctions, 
+    Calls rules and difficulty choice fnctions,
     begins game and runs until end conditions are met.
     '''
-    # GAME LOOP 
+    # GAME LOOP
     print('''                          
     __  _____    _   ______________  __
    / / / /   |  / | / / ____/ __ \ \/ /
   / /_/ / /| | /  |/ / / __/ /_/ /\  / 
- / __  / ___ |/ /|  / /_/ / ____/ / /  
-/_/ /_/_/  |_/_/ |_/\____/_/     /_/   
+ / __  / ___ |/ /|  / /_/ / ____/ / /
+/_/ /_/_/  |_/_/ |_/\____/_/     /_/
     ''')
 
     # Call rules and difficulty functions before starting game loop
@@ -152,31 +152,31 @@ def start_game():
     correct_letters = ''
     secret_word = get_random_word(words)
     GAME_DONE = False
-   
-    while True: 
+
+    while True:
         display_board(missed_letters, correct_letters, secret_word)
-        # call display board function with defined variables 
+        # call display board function with defined variables
         guess = get_guess(missed_letters + correct_letters)
         # call get guess function, concate missed letter
-        # and correct letters for already_guessed 
+        # and correct letters for already_guessed
         if guess in secret_word:
-            # check if guess letter is in game word  
+            # check if guess letter is in game word
             correct_letters = correct_letters + guess
-            # if true concate correct_letters and guess 
-            # Win Condition 
-            found_all_letters = True 
+            # if true concate correct_letters and guess
+            # Win Condition
+            found_all_letters = True
             for i in range(len(secret_word)):
-                # sets found_all_letters to false if all 
+                # sets found_all_letters to false if all
                 # correct letters not present
                 if secret_word[i] not in correct_letters:
                     found_all_letters = False
-                    break 
+                    break
             if found_all_letters:
                 # win state
                 print(f"\nYes, the word is {secret_word} , You won!\n\
 You had {str(len(missed_letters))} missed guesses,\
  and {str(len(correct_letters))} correct guesses.\n")
-                GAME_DONE = True 
+                GAME_DONE = True
         else:
             # lose state
             missed_letters = missed_letters + guess
@@ -186,7 +186,7 @@ You had {str(len(missed_letters))} missed guesses,\
 You had {str(len(missed_letters))} missed guesses,\
  and {str(len(correct_letters))} correct guesses.\n \
 The word was {secret_word}.\n")
-                GAME_DONE = True    
+                GAME_DONE = True
 
         if GAME_DONE:
             if play_again():
@@ -201,7 +201,7 @@ The word was {secret_word}.\n")
 
 def difficulty_choice():
     '''
-    Allows player to choose difficulty. 
+    Allows player to choose difficulty.
     M will remove 2 list elements from HANGMAN_PICS.
     H will remove 4 elements
     Handles error for invalid input
@@ -227,8 +227,8 @@ def difficulty_choice():
 
 def rules():
     '''
-    Asks player if they wish to see rules. 
-    If Y, shows rules 
+    Asks player if they wish to see rules.
+    If Y, shows rules
     '''
     print('Would you like to see the rules? (Y or N)')
     choice = input().upper()
