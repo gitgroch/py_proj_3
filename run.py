@@ -119,13 +119,11 @@ def play_again():
     Asks player to play again, take input and validate if starts with 'y'
     '''
     print('Would you like to play again? (Y or N)')
-    
     choice = input().lower()
     if choice == 'y':
         return choice
-    
-    elif choice == 'n':
-        GAME_DONE = False
+    if choice == 'n':
+        exit()
     else:
         print('Please choose Y or N')
         play_again()
@@ -139,8 +137,11 @@ def start_game():
     '''
     # GAME LOOP 
     print('''                          
-    |_|  /\  |\ | /__ |\/|  /\  |\ | 
-    | | /--\ | \| \_| |  | /--\ | \| 
+    __  _____    _   ______________  __
+   / / / /   |  / | / / ____/ __ \ \/ /
+  / /_/ / /| | /  |/ / / __/ /_/ /\  / 
+ / __  / ___ |/ /|  / /_/ / ____/ / /  
+/_/ /_/_/  |_/_/ |_/\____/_/     /_/   
     ''')
 
     # Call rules and difficulty functions before starting game loop
