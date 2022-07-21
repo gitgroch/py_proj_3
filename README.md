@@ -122,6 +122,7 @@ The player is notified and prompted to re-enter their choice if their input is i
 - Replace hangman imagery with something more original.
 - Add the ability to choose different word categories and lengths.
 - Add more nuance to the difficulty setting (e.g. Longer or harder words).
+- Allow user to choose difficulty when they play again. 
 
 
 ## Testing
@@ -130,6 +131,7 @@ I have manually tested the game by doing the following:
 - Passed the code through PEP8 linter and confirmed there are no errors.
 - Tested error validation by entering invalid inputs.
 - Tested on my local terminal and on the Code Institute Heroku Terminal
+- I also had play testers play the game to test real world play scenarios.
 
 ### Bugs
 
